@@ -1,0 +1,23 @@
+---
+ - name: Playbook de Hardening OpenScap
+   hosts: all
+   tasks:
+     - name: Instalar OpenScap
+       yum:
+         name: "{{ packages }}"
+       vars:
+         packages:
+         - openscap-scanner
+         - scap-security-guide
+     - name: Generar Informe xml and html
+       command: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_C2S --results-arf /usr/share/xml/scap/ssg/content/oscap-resultados.xml --report /usr/share/xml/scap/ssg/content/oscap-report.html --fetch-remote-resources /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+       ignore_errors: True
+     - name:  extraer html
+       fetch: src=/usr/share/xml/scap/ssg/content/oscap-report.html dest=fetched/{{ inventory_hostname }}/ flat=true
+~                                                                                                                                                                       
+~                                                                                                                                                                       
+~                                                                                                                                                                       
+~                                                                                                                                                                       
+~                                                                                                                                                                       
+~                                                                                                                                                                       
+~                                               
