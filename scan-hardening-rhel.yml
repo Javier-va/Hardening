@@ -16,8 +16,7 @@
        fetch: 
          src: /usr/share/xml/scap/ssg/content/oscap-report.html 
          dest: fetched/{{ inventory_hostname }}/ 
-         flat: yes
-~                                                                                                                                                                       
+         flat: true                                                                                                                                                            
 ~                                                                                                                                                                       
 ~                                                                                                                                                                       
 ~                                                                                                                                                                       
